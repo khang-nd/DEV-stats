@@ -1,0 +1,14 @@
+{
+  "en": {
+    "followers": "Followers",
+    "posts": "Total posts",
+    "reactions": "Total post reactions",
+    "views": "Total post views"
+  },
+  "vi": {
+    "followers": "Người theo dõi",
+    "posts": "Bài đăng",
+    "reactions": "Tổng lượt tương tác",
+    "views": "Tổng lượt xem"
+  }
+}
