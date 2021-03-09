@@ -5,14 +5,13 @@ class Card {
       background: "fff",
       primary: "000",
       secondary: "333",
-      showIcons: "false",
       showBorder: "true",
       ...options,
     };
     this.rowCount = 1;
-    this.offset = 30;
+    this.offset = 40;
     this.x = 20;
-    this.y = 35;
+    this.y = 40;
     this.body = `<text
       x="${this.x}"
       y="${this.y}"
@@ -32,18 +31,46 @@ class Card {
     return this;
   }
 
+  createChart(data) {
+    const parsedData = encodeURIComponent(
+      JSON.stringify({
+        type: "pie",
+        data: {
+          labels: Object.keys(data),
+          datasets: [
+            {
+              data: Object.values(data),
+              backgroundColor: [
+                "#c52259",
+                "#ff7f00",
+                "#ffb808",
+                "#0ea6ab",
+                "#bbbbbb",
+              ],
+            },
+          ],
+        },
+        options: {
+          legend: { labels: { fontSize: 14 } },
+          plugins: {
+            datalabels: {
+              color: "#fff",
+              font: { size: 20 },
+            },
+          },
+        },
+      })
+    );
+    const chartUrl = `https://quickchart.io/chart?w=300&amp;h=300&amp;c=${parsedData}`;
+    const size = 220;
+    this.body += `<image href="${chartUrl}" width="${size}" height="${size}" />`;
+    return this;
+  }
+
   render() {
     const { rowCount, offset } = this;
-    const {
-      font,
-      background,
-      primary,
-      secondary,
-      image,
-      showIcons,
-      showBorder,
-    } = this.options;
-    const width = 380;
+    const { font, background, primary, secondary, showBorder } = this.options;
+    const width = 480;
     const height = rowCount * offset + offset;
 
     return `<svg
@@ -68,12 +95,11 @@ class Card {
           fill: #${primary};
         }
         image {
-          transform: translate(70%, calc(50% - 50px));
+          transform: translate(50%, 8px);
         }
       </style>
       <rect width="100%" height="100%"></rect>
       ${this.body}
-      <image href="${image}" width="100" height="100" />
     </svg>`;
   }
 }

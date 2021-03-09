@@ -29,16 +29,22 @@ module.exports = async () => {
   }
 
   const allTags = articles.reduce(tagsReducer, []);
-  const uniTags = new Set(allTags);
-  const postTendency = {};
-  uniTags.forEach((uniTag) => {
-    postTendency[uniTag] = allTags.filter((tag) => tag === uniTag).length;
-  });
+  const uniqueTags = Array.from(new Set(allTags));
+  const occurences = uniqueTags
+    .map((tag) => [tag, allTags.filter((_tag) => _tag === tag).length])
+    .sort((a, b) => b[1] - a[1]);
+  const [a, b, c, d, ...e] = occurences;
 
   return {
     total: articles.length,
     totalViews: articles.reduce(viewCountReducer, 0),
     totalReactions: articles.reduce(reactionCountReducer, 0),
-    postTendency,
+    postTendency: {
+      [a[0]]: a[1],
+      [b[0]]: b[1],
+      [c[0]]: c[1],
+      [d[0]]: d[1],
+      Others: e.reduce((total, next) => total + next[1], 0),
+    },
   };
 };

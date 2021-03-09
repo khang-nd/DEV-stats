@@ -13,14 +13,14 @@ module.exports = async (req, res) => {
 
   all([getProfile(), getArticles(), getFollowers()])
     .then(([profile, articleStats, followerCount]) => {
-      const { name, profile_image } = profile;
-      const { total, totalViews, totalReactions } = articleStats;
+      const { total, totalViews, totalReactions, postTendency } = articleStats;
       res.send(
-        new Card(name, { image: profile_image, ...req.query })
+        new Card(profile.name, { ...req.query })
           .createRow(message.posts, total)
           .createRow(message.views, totalViews)
           .createRow(message.reactions, totalReactions)
           .createRow(message.followers, followerCount)
+          .createChart(postTendency)
           .render()
       );
     })

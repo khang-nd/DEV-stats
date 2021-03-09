@@ -1,7 +1,7 @@
 const getStats = require("./src/getStats");
 const app = require("express")();
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3210;
 
 app.get("/", getStats);
 app.listen(port, () =>
