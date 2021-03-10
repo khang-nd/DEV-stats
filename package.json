@@ -19,6 +19,6 @@
     "quickchart-js": "^1.0.6"
   },
   "engines": {
-    "node": "14.x"
+    "node": "12.x"
   }
 }
