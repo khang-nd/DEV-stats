@@ -1,7 +1,7 @@
 {
   "name": "dev-stats",
-  "version": "0.2.1",
-  "description": "Your DEV.to stats anywhere",
+  "version": "1.0.0",
+  "description": "DEV.to stats anywhere",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",

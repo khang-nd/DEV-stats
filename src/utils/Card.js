@@ -5,15 +5,14 @@ class Card {
     this.options = {
       font: "'Segoe UI', sans-serif",
       background: "fff",
-      primary: "000",
-      secondary: "333",
-      showBorder: "true",
+      text: "000",
+      chartColors: "dc67ab,dc67ce,a367dc,6771dc,67b7dc,fff",
       ...options,
     };
     this.offset = 40;
     this.x = 20;
     this.y = 40;
-    this.width = 480;
+    this.width = 470;
     this.height = this.offset * 2;
     this.body = `<text
       x="${this.x}"
@@ -36,7 +35,10 @@ class Card {
 
   async createChart(data) {
     const size = this.height - this.offset / 2;
+    const { chartColors, text } = this.options;
+    const colors = chartColors.split(",").map((c) => "#" + c);
     const chart = new Chart()
+      .setFormat("svg")
       .setWidth(300)
       .setBackgroundColor("transparent")
       .setConfig({
@@ -46,23 +48,16 @@ class Card {
           datasets: [
             {
               data: Object.values(data),
-              backgroundColor: [
-                "#c52259",
-                "#ff7f00",
-                "#ffb808",
-                "#0ea6ab",
-                "#bbbbbb",
-              ],
+              backgroundColor: colors.slice(0, 5),
             },
           ],
         },
         options: {
-          legend: { labels: { fontSize: 14 } },
+          legend: {
+            labels: { fontSize: 14, fontColor: "#" + text },
+          },
           plugins: {
-            datalabels: {
-              color: "#fff",
-              font: { size: 20 },
-            },
+            datalabels: { color: colors.pop(), font: { size: 20 } },
           },
         },
       });
@@ -71,13 +66,13 @@ class Card {
       href="${chartData}"
       width="${size}"
       height="${size}"
-      transform="translate(${this.width / 2}, 8)" />`;
+      transform="translate(${this.width / 2}, 5)" />`;
     return this;
   }
 
   render() {
     const { width, height } = this;
-    const { font, background, primary, secondary, showBorder } = this.options;
+    const { font, background, text } = this.options;
 
     return `<svg
       xmlns="http://www.w3.org/2000/svg"
@@ -87,18 +82,16 @@ class Card {
     >
       <style>
         rect {
-          ${showBorder === "true" && "stroke: #ccc;"}
           fill: #${background};
         }
         text {
           font-family: ${font};
           font-size: 15px;
-          color: #${secondary};
+          fill: #${text};
         }
         .title {
           font-size: 22px;
           font-weight: bold;
-          fill: #${primary};
         }
       </style>
       <rect width="100%" height="100%"></rect>
