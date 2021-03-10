@@ -1,17 +1,20 @@
+const Chart = require("quickchart-js");
+
 class Card {
   constructor(username, options) {
     this.options = {
-      font: "Segoe UI",
+      font: "'Segoe UI', sans-serif",
       background: "fff",
       primary: "000",
       secondary: "333",
       showBorder: "true",
       ...options,
     };
-    this.rowCount = 1;
     this.offset = 40;
     this.x = 20;
     this.y = 40;
+    this.width = 480;
+    this.height = this.offset * 2;
     this.body = `<text
       x="${this.x}"
       y="${this.y}"
@@ -27,13 +30,16 @@ class Card {
       <text>${label}</text>
       <text transform="translate(160, 0)">${number}</text>
     </g>`;
-    this.rowCount++;
+    this.height += this.offset;
     return this;
   }
 
-  createChart(data) {
-    const parsedData = encodeURIComponent(
-      JSON.stringify({
+  async createChart(data) {
+    const size = this.height - this.offset / 2;
+    const chart = new Chart()
+      .setWidth(300)
+      .setBackgroundColor("transparent")
+      .setConfig({
         type: "pie",
         data: {
           labels: Object.keys(data),
@@ -59,19 +65,19 @@ class Card {
             },
           },
         },
-      })
-    );
-    const chartUrl = `https://quickchart.io/chart?w=300&amp;h=300&amp;c=${parsedData}`;
-    const size = 220;
-    this.body += `<image href="${chartUrl}" width="${size}" height="${size}" />`;
+      });
+    const chartData = await chart.toDataUrl();
+    this.body += `<image
+      href="${chartData}"
+      width="${size}"
+      height="${size}"
+      transform="translate(${this.width / 2}, 8)" />`;
     return this;
   }
 
   render() {
-    const { rowCount, offset } = this;
+    const { width, height } = this;
     const { font, background, primary, secondary, showBorder } = this.options;
-    const width = 480;
-    const height = rowCount * offset + offset;
 
     return `<svg
       xmlns="http://www.w3.org/2000/svg"
@@ -93,9 +99,6 @@ class Card {
           font-size: 22px;
           font-weight: bold;
           fill: #${primary};
-        }
-        image {
-          transform: translate(50%, 8px);
         }
       </style>
       <rect width="100%" height="100%"></rect>

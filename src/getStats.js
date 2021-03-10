@@ -14,16 +14,14 @@ module.exports = async (req, res) => {
   all([getProfile(), getArticles(), getFollowers()])
     .then(([profile, articleStats, followerCount]) => {
       const { total, totalViews, totalReactions, postTendency } = articleStats;
-      res.send(
-        new Card(profile.name, { ...req.query })
-          .createRow(message.posts, total)
-          .createRow(message.views, totalViews)
-          .createRow(message.reactions, totalReactions)
-          .createRow(message.followers, followerCount)
-          .createChart(postTendency)
-          .render()
-      );
+      return new Card(profile.name, { ...req.query })
+        .createRow(message.posts, total)
+        .createRow(message.views, totalViews)
+        .createRow(message.reactions, totalReactions)
+        .createRow(message.followers, followerCount)
+        .createChart(postTendency);
     })
+    .then((statCard) => res.send(statCard.render()))
     .catch((error) => {
       console.error(error);
       res.send(Error("Something went wrong!"));
