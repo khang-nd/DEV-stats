@@ -42,4 +42,4 @@ Customized chart colors:
 
 ## Contributing
 
-I would appreciate it, feel free to open pull requests to contribute if you like it and have more amazings idea for further features.
+I would appreciate it, feel free to open pull requests to contribute if you like it and have more amazing ideas for further features.
