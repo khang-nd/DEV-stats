@@ -40,6 +40,6 @@ Customized chart colors:
 
 ![DEV stats customized chart](https://dev-stats.vercel.app?chartColors=3bf5c6,28d8ab,23bf97,1ca280,23886e,333)
 
-# Contributing
+## Contributing
 
 I would appreciate it, feel free to open pull requests to contribute if you like it and have more amazings idea for further features.
