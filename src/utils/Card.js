@@ -63,7 +63,7 @@ class Card {
       });
     const chartData = await chart.toDataUrl();
     this.body += `<image
-      href="${chartData}"
+      href="${chartData.replace("image/png", "image/svg+xml")}"
       width="${size}"
       height="${size}"
       transform="translate(${this.width / 2}, 5)" />`;
