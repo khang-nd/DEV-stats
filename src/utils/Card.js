@@ -12,7 +12,7 @@ class Card {
     this.offset = 40;
     this.x = 20;
     this.y = 40;
-    this.width = 470;
+    this.width = 500;
     this.height = this.offset * 2;
     this.body = `<text
       x="${this.x}"
@@ -34,7 +34,7 @@ class Card {
   }
 
   async createChart(data) {
-    const size = this.height - this.offset / 2;
+    const size = this.height - this.offset;
     const { chartColors, text } = this.options;
     const colors = chartColors.split(",").map((c) => "#" + c);
     const chart = new Chart()
@@ -63,10 +63,10 @@ class Card {
       });
     const chartData = await chart.toDataUrl();
     this.body += `<image
-      href="${chartData.replace("image/png", "image/svg+xml")}"
+      href="${chartData}"
       width="${size}"
       height="${size}"
-      transform="translate(${this.width / 2}, 5)" />`;
+      transform="translate(${this.width - size - this.offset / 2}, ${this.offset / 3})" />`;
     return this;
   }
 
@@ -90,7 +90,7 @@ class Card {
           fill: #${text};
         }
         .title {
-          font-size: 22px;
+          font-size: 20px;
           font-weight: bold;
         }
       </style>
