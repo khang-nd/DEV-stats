@@ -1,6 +1,6 @@
 # DEV Stats
 
-[![DEV-stats](https://dev-stats.vercel.app?background=f9f9f9)](https://dev.to/khangnd)
+[![DEV-stats](https://dev-stats-khangnd.herokuapp.com?background=f9f9f9)](https://dev.to/khangnd)
 
 👆 That's mine, want yours? It's easy! Follow these steps:
 
@@ -27,18 +27,18 @@ The service accepts these query parameters as inputs to customize the stat card:
 Dark theme:
 
 ```markdown
-![](https://dev-stats.vercel.app?background=19252f&text=fff)
+![](https://dev-stats-khangnd.herokuapp.com?background=19252f&text=fff)
 ```
 
-![DEV stats dark theme](https://dev-stats.vercel.app?background=19252f&text=fff)
+![DEV stats dark theme](https://dev-stats-khangnd.herokuapp.com?background=19252f&text=fff)
 
 Customized chart colors:
 
 ```markdown
-![](https://dev-stats.vercel.app?chartColors=3bf5c6,28d8ab,23bf97,1ca280,23886e,333)
+![](https://dev-stats-khangnd.herokuapp.com?chartColors=3bf5c6,28d8ab,23bf97,1ca280,23886e,333)
 ```
 
-![DEV stats customized chart](https://dev-stats.vercel.app?chartColors=3bf5c6,28d8ab,23bf97,1ca280,23886e,333)
+![DEV stats customized chart](https://dev-stats-khangnd.herokuapp.com?chartColors=3bf5c6,28d8ab,23bf97,1ca280,23886e,333)
 
 ## Contributing
 
