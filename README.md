@@ -1,6 +1,6 @@
 # DEV Stats
 
-[![DEV-stats](https://dev-stats-khangnd.herokuapp.com?background=f9f9f9)](https://dev.to/khangnd)
+[![DEV-stats](https://dev-stats-khangnd.herokuapp.com?background=f9f9f9&0)](https://dev.to/khangnd)
 
 👆 That's mine, want yours? It's easy! Follow these steps:
 
@@ -30,7 +30,7 @@ Dark theme:
 ![](https://dev-stats-khangnd.herokuapp.com?background=19252f&text=fff)
 ```
 
-![DEV stats dark theme](https://dev-stats-khangnd.herokuapp.com?background=19252f&text=fff)
+![DEV stats dark theme](https://dev-stats-khangnd.herokuapp.com?background=19252f&text=fff&0)
 
 Customized chart colors:
 
@@ -38,7 +38,7 @@ Customized chart colors:
 ![](https://dev-stats-khangnd.herokuapp.com?chartColors=3bf5c6,28d8ab,23bf97,1ca280,23886e,333)
 ```
 
-![DEV stats customized chart](https://dev-stats-khangnd.herokuapp.com?chartColors=3bf5c6,28d8ab,23bf97,1ca280,23886e,333)
+![DEV stats customized chart](https://dev-stats-khangnd.herokuapp.com?0&chartColors=3bf5c6,28d8ab,23bf97,1ca280,23886e,333)
 
 ## Contributing
 
